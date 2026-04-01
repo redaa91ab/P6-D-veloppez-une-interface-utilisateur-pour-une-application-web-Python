@@ -1,9 +1,6 @@
-
 html {
     display: flex;
     justify-content: center;
-    padding-left: 10%;
-    padding-right: 10%;
     padding-top: 2%;
 }
 
@@ -11,35 +8,26 @@ body {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    width: 72vw;
 }
 
 #first-header {
-    height : 122px ;
-    padding: 16px 8px;
-    box-sizing: border-box;
-    border-radius : 16px ;
+    height : 137px ;
+    padding-inline: 2.5%;
     border: 1px solid ;
     background-color: rgb(97, 120, 127, 1);
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
 #first-header img {
-    width : 127px ;
-    height : 94px ;
+    width : 182px ;
 }
 
 #first-header h3 {
     display: none;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 300;
-    font-size: 40px;       
-    line-height: 100%;     
-    letter-spacing: 0px;  
-    color: white ; 
-    margin-left: 30px;
+    
 }
 
 h2 {
@@ -53,38 +41,35 @@ h2 {
 
 #best-movie {
     border: 6px black solid;
+    box-sizing: border-box;
 }
 
 #big-movie-box {
     /*min-height: 369px;*/
-    height: 463px;
-    padding : 17.5px ;
+    /*height: 463px;
+    padding : 17.5px ;*/
     border: 6px black solid;
+    box-sizing: border-box;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    width: 72vw;
 }
 
 #big-movie-box img {
     border: 1px black solid;
-    height: 100%;
+    aspect-ratio: 9/16;
+    width: 33%;
+    margin : 10px ;
     /*width: auto;*/
 }
 
-#big-movie-box .movie-info {
-    /*height: 334px;*/
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    padding: 17.5px;
-
-}
-
 #big-movie-box .movie-info h2 {
-    margin-top: 0;
+    margin: 0;
 }
 
 #big-movie-box .short-description {
+    margin : 0 ;
     font-family: 'Oswald';
     font-weight: 200;
     font-size: 16px;
@@ -95,8 +80,6 @@ h2 {
 }
 
 #big-movie-box .movie-info button {
-    width: 166px ;
-    height: 68px;
     display: flex;
     align-self: flex-end;
     justify-content: center;
@@ -104,12 +87,16 @@ h2 {
     background-color: rgb(250,11,11,11);
     color: white ;
     border-radius : 25px ;
-    font-size: 24px;
     font-family: 'Oswald';
     font-weight: 500;
     line-height: 100%;
     letter-spacing: 0%;
     vertical-align: middle ;
+    border: none;
+
+    font-size: 14px;
+    width: 83px ;
+    height: 36px;
 }
 
 .movie-list {
@@ -202,38 +189,72 @@ h2 {
 }
 
 @media (min-width: 550px ) {
+    body {
+        width: min(78vw, 837px);
+        padding-top: 2%;
+    }
+
     #first-header h3 {
         display: block;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 300;
+        font-size: 40px;       
+        line-height: 100%;     
+        letter-spacing: 0px;  
+        color: white ; 
+        margin: auto;
     }
     #first-header {
         justify-content: flex-start;
+    }
+    #first-header img {
+        width : 165px ;
     }
     h2 {
         font-size: 40px;
     }
     #big-movie-box {
-        height: 618px;
-        padding : 17.5px ;
+        flex-direction: row;
+        width: min(78vw, 837px);
+    }
+    #big-movie-box .movie-info {
+        display: flex;
+        flex-direction: column;
     }
     #big-movie-box .short-description {
         font-size: 24px;
+    }
+    #big-movie-box .movie-info button {
+    font-size: 20px;
+    width: 115px ;
+    height: 45px;
+    }
+    #big-movie-box img {
+        width: 33%;
     }
 
 }
 
 @media (min-width: 900px ) {
+    #first-header {
+        height : 122px ;
+    }
+    #first-header img {
+        width : 127px ;
+    }
     #first-header h3 {
-        display: block;
+        margin-left: 30px;
     }
     h2 {
         font-size: 48px;
     }
-    #big-movie-box {
-        height: 400px;
-        padding : 17.5px ;
-    }
     #big-movie-box .short-description {
         font-size: 28px;
+    }
+    #big-movie-box .movie-info button {
+        font-size: 24px;
+        width: 166px ;
+        height: 68px;
     }
 }
 
