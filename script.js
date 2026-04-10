@@ -1,3 +1,21 @@
+const ButtonSeeMore = document.querySelectorAll(".btn-see-more");
+
+ButtonSeeMore.forEach((button) => {
+    button.addEventListener("click", () => {
+        const section = button.closest(".category");
+        const movieList = section.querySelector(".movie-list");
+
+        movieList.classList.toggle("expanded");
+        
+        if (movieList.classList.contains("expanded")) {
+            button.textContent = "See less";
+        } else {
+            button.textContent = "See more";
+        }
+    });
+});
+
+
 async function GetMoviesCategory(url_category, number_of_movies) {
     const movies_url = []
     let response = await fetch(url_category)
@@ -45,9 +63,10 @@ async function GetDetailsMovie(url_movie) {
 // }
 
 async function CreateMoviesBox(genre_html, movies_url) {
+    const movie_list_html = genre_html.querySelector('.movie-list')
+    movie_list_html.innerHTML = ""
     for (const movie_url of movies_url) {
         let movie_data = await GetDetailsMovie(movie_url)
-        const movie_list_html = genre_html.querySelector('.movie-list')
         movie_list_html.innerHTML += `
         <article class="movie-box">
                 <div class="transparent-rectangle">
@@ -58,7 +77,6 @@ async function CreateMoviesBox(genre_html, movies_url) {
                 onerror="this.src='images/image_not_found.jpeg'">
         </article>
     `
-    
     }
 }
 
@@ -107,35 +125,37 @@ async function FillTopRatedMovies(url_api) {
 //     }
 // }
 
-async function FillGenres(url_api) {
-    const all_genres_html = document.querySelectorAll(".genre")    
-    for (const genre_html of all_genres_html) {
-        let genre_name
-        if (genre_html.id === "others" || genre_html.id == "second-others") {
-            const select = genre_html.querySelector(".select")
-            genre_name = select.value
-            select.addEventListener("change", async function() {
-                genre_name = select.value
-                movies_url = await GetMoviesCategory(url_api + "?sort_by=-imdb_score&genre=" + genre_name, 6)
-                await CreateMoviesBox(genre_html, movies_url)
-            })
-        }
-        else {
-            genre_name = genre_html.id
-        }
-        movies_url = await GetMoviesCategory(url_api + "?sort_by=-imdb_score&genre=" + genre_name, 6)
-        
-        await CreateMoviesBox(genre_html, movies_url)
+async function FillCategoryNative(url_api) {
+    const categories_html = document.querySelectorAll(".native")    
+    for (const category_html of categories_html) {
+        let category_name = category_html.id
+        movies_url = await GetMoviesCategory(url_api + "?sort_by=-imdb_score&genre=" + category_name, 6)
+        await CreateMoviesBox(category_html, movies_url)
     }
 }
 
-
+async function FillCategoryOthers(url_api) {
+    const categories_html = document.querySelectorAll(".others")    
+    for (const category_html of categories_html) {
+        const select = category_html.querySelector(".select")
+        let category_name = select.value
+        console.log(category_name)
+        select.addEventListener("change", async function() {
+            category_name = select.value
+            movies_url = await GetMoviesCategory(url_api + "?sort_by=-imdb_score&genre=" + category_name, 6)
+            await CreateMoviesBox(category_html, movies_url)
+        })
+        movies_url = await GetMoviesCategory(url_api + "?sort_by=-imdb_score&genre=" + category_name, 6)
+        await CreateMoviesBox(category_html, movies_url)
+    }
+}
 
 async function main() {
     const url_api = "http://localhost:8000/api/v1/titles/"
     await FillBestMovie(url_api)
     await FillTopRatedMovies(url_api)
-    await FillGenres(url_api)
+    await FillCategoryNative(url_api)
+    await FillCategoryOthers(url_api)
 }
 
 main()
