@@ -1,7 +1,6 @@
 html {
     display: flex;
     justify-content: center;
-    padding-top: 2%;
 }
 
 body {
@@ -9,9 +8,17 @@ body {
     flex-direction: column;
     gap: 40px;
     width: 72vw;
+    padding-top: 2%;
 }
 
-#first-header {
+.text {
+    font-family: 'Oswald';
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle ;
+}
+
+.header {
     height : 137px ;
     padding-inline: 2.5%;
     border: 1px solid ;
@@ -21,11 +28,11 @@ body {
     justify-content: center;
 }
 
-#first-header img {
+.header img {
     width : 182px ;
 }
 
-#first-header h3 {
+.header h3 {
     display: none;  
 }
 
@@ -33,24 +40,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 .category h2 {
-    font-family: 'Oswald';
     font-weight: 600;
     font-size: 32px;
-    line-height: 100%;
-    letter-spacing: 0%;
     color: black;
     display: flex;
     align-self: center ;
 }
 
 #big-movie-box {
-    /*min-height: 369px;*/
-    /*height: 463px;
-    padding : 17.5px ;*/
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,54 +59,40 @@ body {
 }
 
 #big-movie-box img {
-    /* border: 1px black solid; */
     margin : 10px ;
     object-fit: cover;
     aspect-ratio: 1/1;
     width: 90% ;
     max-width: 90%;
-    /*height : 298px ;*/
 }
 
 #big-movie-box .movie-info {
     display: flex;
     flex-direction: column;
-    
 }
 
 #big-movie-box .movie-info h2 {
-    display: flex;
     align-self: flex-start ;
     margin: 5%;
 }
 
 #big-movie-box .short-description {
     margin : 5% ;
-    font-family: 'Oswald';
     font-weight: 200;
     font-size: 16px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    vertical-align: middle ;
     color: black;
 }
 
 #big-movie-box .movie-info button {
     display: flex;
-    
     justify-content: center;
     align-items: center;
     background-color: rgb(250,11,11,11);
     color: white ;
     border-radius : 25px ;
-    font-family: 'Oswald';
     font-weight: 500;
-    line-height: 100%;
-    letter-spacing: 0%;
-    vertical-align: middle ;
     border: none;
     margin : 5% ;
-
     align-self: center;
     font-size: 14px;
     width: 83px ;
@@ -115,10 +101,7 @@ body {
 
 .movie-list {
     display: flex;
-    /*flex-wrap: wrap;*/
     flex-direction: column;
-    /* row-gap: 20px; */
-    /* border: 1px black solid; */
     width: 72vw;
     gap : 50px ;
 }
@@ -131,10 +114,9 @@ body {
 .movie-list img{
     width: 100% ;
     height : 100% ;
-    object-fit: cover;
-    /* border: 1px black solid; */
-    
+    object-fit: cover;    
 }
+
 
 .movie-box:nth-child(n+3) {
         display: none;
@@ -142,6 +124,23 @@ body {
 
 .movie-list.expanded .movie-box:nth-child(n+3) {
     display: block;
+}
+
+
+.btn-see-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(250,11,11,11);
+    color: white ;
+    border-radius : 25px ;
+    font-weight: 500;
+    border: none;
+    margin : 5% ;
+    align-self: center;
+    font-size: 20px;
+    width: 206px ;
+    height: 32px;
 }
 
 
@@ -160,11 +159,7 @@ body {
 .transparent-rectangle h4 {
     font-size: 24px ;
     color: white ;
-    font-family: 'Oswald';
     font-weight: 600;
-    line-height: 100%;
-    letter-spacing: 0%;
-    vertical-align: middle ;
     margin-top: 0px;
 }
 
@@ -174,11 +169,8 @@ body {
     font-size: 14px ;
     color: white ;
     background-color: rgb(45, 44, 44, 1);
-    font-family: 'Oswald';
     font-weight: 500;
-    line-height: 100%;
-    letter-spacing: 0%;
-    vertical-align: middle ;
+    border: none;
     width: 81px;
     height: 25px;
     padding-top: 2px;
@@ -191,6 +183,7 @@ body {
     align-self: flex-end;
     justify-content: center  ;
     align-items: center;
+
 }
 
 .others #name {
@@ -203,12 +196,8 @@ body {
 
 .others #name .select {
     height: 70px;
-    font-family: "Oswald";
     font-size: 36px;
     font-weight: 600;
-    line-height: 100%;
-    letter-spacing: 0%;
-    vertical-align: middle;
     color: black;
     background-color: white;
     
@@ -220,20 +209,17 @@ body {
         padding-top: 2%;
     }
 
-    #first-header h3 {
+    .header h3 {
         display: block;
-        font-family: 'Oswald', sans-serif;
         font-weight: 300;
         font-size: 40px;       
-        line-height: 100%;     
-        letter-spacing: 0px;  
         color: white ; 
         margin: auto;
     }
-    #first-header {
+    .header {
         justify-content: flex-start;
     }
-    #first-header img {
+    .header img {
         width : 165px ;
     }
     h2 {
@@ -261,7 +247,6 @@ body {
         height: 246px;
     }
     .movie-list {
-    /* display: flex; */
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
@@ -280,13 +265,13 @@ body {
 }
 
 @media (min-width: 900px ) {
-    #first-header {
+    .header {
         height : 122px ;
     }
-    #first-header img {
+    .header img {
         width : 127px ;
     }
-    #first-header h3 {
+    .header h3 {
         margin-left: 30px;
     }
     h2 {
@@ -314,17 +299,3 @@ body {
         display: none;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
